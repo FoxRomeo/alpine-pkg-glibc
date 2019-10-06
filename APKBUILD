@@ -8,7 +8,7 @@ pkgdesc="GNU C Library compatibility layer"
 arch="x86_64"
 url="https://github.com/sgerrand/alpine-pkg-glibc"
 license="LGPL"
-source="https://github.com/sgerrand/docker-glibc-builder/releases/download/$pkgver-$_pkgrel/glibc-bin-$pkgver-$_pkgrel-x86_64.tar.gz
+source="https://github.com/sgerrand/docker-glibc-builder/releases/download/$pkgver-$_pkgrel/glibc-bin-$pkgver-$_pkgrel-$arch.tar.gz
 nsswitch.conf
 ld.so.conf"
 subpackages="$pkgname-bin $pkgname-dev $pkgname-i18n"
@@ -27,9 +27,9 @@ package() {
   rm -rf "$pkgdir"/usr/glibc-compat/lib/audit
   rm -rf "$pkgdir"/usr/glibc-compat/share
   rm -rf "$pkgdir"/usr/glibc-compat/var
-  ln -s /usr/glibc-compat/lib/ld-linux-x86-64.so.2 ${pkgdir}/lib/ld-linux-x86-64.so.2
-  ln -s /usr/glibc-compat/lib/ld-linux-x86-64.so.2 ${pkgdir}/lib64/ld-linux-x86-64.so.2
-  ln -s /usr/glibc-compat/lib/ld-linux-x86-64.so.2 ${pkgdir}/usr/glibc-compat/lib64/ld-linux-x86-64.so.2
+  ln -s /usr/glibc-compat/lib/ld-linux-$arch.so.2 ${pkgdir}/lib/ld-linux-$arch.so.2
+  ln -s /usr/glibc-compat/lib/ld-linux-$arch.so.2 ${pkgdir}/lib64/ld-linux-$arch.so.2
+  ln -s /usr/glibc-compat/lib/ld-linux-$arch.so.2 ${pkgdir}/usr/glibc-compat/lib64/ld-linux-$arch.so.2
   ln -s /usr/glibc-compat/etc/ld.so.cache ${pkgdir}/etc/ld.so.cache
 }
 
